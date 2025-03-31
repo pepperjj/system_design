@@ -23,7 +23,7 @@ https://github.com/karanpratapsingh/system-design
 
 ### DNS
 #### How DNS works
-![[Pasted image 20250330171430.png]]
+![[dns.png]]
 
 DNS lookup involves the following eight steps:
 1. A client types example.com into a web browser, the query travels to the internet and is received by a DNS resolver (receive the DNS query).
@@ -91,3 +91,22 @@ If a user request goes to a different sever (because of load balancing), the sta
 	-  can use JWT, token bases auth, then don't need sticky sessions.
 		- stateless, any BE pod can validate and process the request
 ### Clustering
+- A computer cluster is a group of two or more computers, or nodes, that run in parallel to achieve a common goal.
+- at least one node is designated as the leader node and acts as the entry point to the cluster.
+- a cluster should be designed to minimize latency and prevent bottlenecks in node-to-node communication.
+- servers in one cluster are aware of each others and work together for common purpose
+#### High Availability Cluster
+- active-active
+	- at least two nodes are actively running the same kind of services simultaneously![[active_active.png]]
+	- main purpose, load balancing, distributed traffic to all the nodes to prevent overload and single node failover
+- active-passive
+	- at least two nodes, not all the nodes are active (e.g. two nodes structure, if the first node already active, the second node must be passive or on standby)![[active_passive.png]]
+#### kubernetes
+- master node
+	- main server to control pod will run on which server, monitor pod running status
+	- etcd, main database, store cluster status
+- worker nodes
+	- server that run the pods, monitor the lifecycle of the pods
+	- load balancing (kube-proxy
+	
+![[kubernetes.png]]
